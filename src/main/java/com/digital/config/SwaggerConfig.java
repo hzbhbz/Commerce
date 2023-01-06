@@ -8,8 +8,10 @@ import java.util.Set;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.ApiKey;
 import springfox.documentation.service.AuthorizationScope;
 import springfox.documentation.service.SecurityReference;
@@ -26,6 +28,7 @@ public class SwaggerConfig {
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).consumes(getConsumeContentTypes())
 				.host("combb.apigateway.com:8080")
+				.apiInfo(getApiInfo())
 				// swagger에서 jwt 토큰값 넣기위한 설정
 				.securityContexts(Arrays.asList(securityContext()))
 				// swagger에서 jwt 토큰값 넣기위한 설정
@@ -63,4 +66,10 @@ public class SwaggerConfig {
 		produces.add("application/json;charset=UTF-8");
 		return produces;
 	}
+	
+    private ApiInfo getApiInfo() {
+        return new ApiInfoBuilder()
+                .title("commerce-apigateway-v2")
+                .build();
+    }
 }
