@@ -24,7 +24,7 @@ public class ProductContext {
 	/** 상품 등록 */
 	public Product insertProduct(Product product) throws Exception {
 		
-		String url = "http://commerce-product/rest/product/insert";
+		String url = "http://commerce-product-svc/rest/product/insert";
 		String response = HttpConnectionUtils.postRequest(url, product);
 		product = (Product) HttpConnectionUtils.jsonToObject(response, product.getClass());
 		return product;
