@@ -46,7 +46,7 @@ pipeline {
       steps {
         script {
           echo "Deploy App START"
-          sh "/usr/local/bin/kubectl --kubeconfig=/home/jenkins/acloud-client.conf create -f commerce-bb-apigateway-deployment.yaml"
+          sh "/usr/local/bin/kubectl --kubeconfig=/home/jenkins/acloud-client.conf apply -f apigateway_deployment_v1.yaml"
           echo "Deploy App END"
         }
       }
