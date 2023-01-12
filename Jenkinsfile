@@ -21,7 +21,7 @@ pipeline {
       steps{
         script {
           echo "Build image START $BUILD_NUMBER"
-          sh "docker build -t 192.168.100.12/bb-edu/commerce-apigateway:latest-$BUILD_NUMBER ."
+          sh "docker build --no-cache -t 192.168.100.12/bb-edu/commerce-apigateway:latest-$BUILD_NUMBER ."
           echo "Build image END"
         }
       }
