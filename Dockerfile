@@ -10,6 +10,7 @@ RUN mkdir -p /app
 RUN chown -R wasadm:wasadm /app
 
 RUN cd /app
+RUN git clone https://github.com/hzbhbz/Jennifer.git /app/agent.java
 RUN git clone https://github.com/hzbhbz/Commerce-Common.git /app/Commerce-Common
 RUN git clone https://github.com/hzbhbz/Commerce.git /app/Commerce
 
@@ -21,4 +22,4 @@ RUN chmod -R 755 /app/*
 
 RUN gradle build
 
-CMD ["java", "-jar", "/app/Commerce/build/libs/Commerce-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-javaagent:/app/agent.java/jennifer.jar", "-Djennifer.config=/app/agent.java/conf/commerce-apigateway-v1.conf", "-jar", "/app/Commerce/build/libs/Commerce-0.0.1-SNAPSHOT.jar"]
