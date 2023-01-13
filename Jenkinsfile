@@ -47,6 +47,7 @@ pipeline {
         script {
           echo "Deploy App START"
           sh "/usr/local/bin/kubectl --kubeconfig=/home/jenkins/acloud-client.conf apply -f apigateway_deployment_v1.yaml"
+          sh "/usr/local/bin/kubectl --kubeconfig=/home/jenkins/acloud-client.conf set image deployments/commerce-apigateway apigateway-cotainer=192.168.100.12/bb-edu/commerce-apigateway:latest-$BUILD_NUMBER -n bb-edu"
           echo "Deploy App END"
         }
       }
